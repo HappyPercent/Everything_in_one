@@ -1,1 +1,0 @@
-(cd Container && npm run start) & (cd Life && npm run start)

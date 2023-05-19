@@ -1,5 +1,5 @@
 import React, { useState } from "react";
 
-export default function Life() {
+export default function Hanoy() {
   return <div>Hanoy</div>;
 }

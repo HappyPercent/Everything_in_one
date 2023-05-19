@@ -11,7 +11,7 @@ module.exports = {
   },
   devServer: {
     open: false,
-    port: 8081,
+    port: 8083,
     historyApiFallback: true,
   },
   optimization: {
