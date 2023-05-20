@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Hanoy from "./Hanoy";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Hanoy from './Hanoy';
 
-import "./index.css";
+import './index.css';
 
 const App = () => (
   <div className="container">
     <Hanoy />
   </div>
 );
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

@@ -4,19 +4,18 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const deps = require('./package.json').dependencies;
 module.exports = {
   output: {
-    publicPath: 'http://localhost:8083/',
+    publicPath: 'http://localhost:8080/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
-  devServer: {
-    open: false,
-    port: 8083,
-    historyApiFallback: true,
-  },
   optimization: {
     minimize: false,
-    runtimeChunk: false,
+    runtimeChunk: true,
+  },
+  devServer: {
+    port: 8080,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -33,20 +32,21 @@ module.exports = {
       },
       {
         test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: ['/node_modules/', '/Hanoy/', '/Life/', '/Tanks/'],
         use: {
           loader: 'babel-loader',
         },
       },
     ],
   },
-
   plugins: [
     new ModuleFederationPlugin({
-      name: 'tanks',
+      name: 'container',
       filename: 'remoteEntry.js',
-      exposes: {
-        './Tanks': './src/Tanks',
+      remotes: {
+        life: 'life@http://localhost:8081/remoteEntry.js',
+        hanoy: 'hanoy@http://localhost:8082/remoteEntry.js',
+        tanks: 'tanks@http://localhost:8083/remoteEntry.js',
       },
       shared: {
         ...deps,
