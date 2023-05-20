@@ -2,7 +2,7 @@ import { exec } from 'child_process';
 import { readdirSync } from 'fs';
 
 if (process.argv.length !== 3) {
-  throw new Error('Nope, only single string command');
+  throw new Error('Nope, only single string command, you passed ', process.argv.join(' ,'));
 }
 
 var command = process.argv[2];
