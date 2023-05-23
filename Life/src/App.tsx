@@ -1,12 +1,12 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import Life from './Life';
 
-import './index.css';
+import * as SC from './styles';
 
 const App = () => (
-  <div className="container">
+  <SC.Container>
     <Life />
-  </div>
+  </SC.Container>
 );
+
 ReactDOM.render(<App />, document.getElementById('app'));

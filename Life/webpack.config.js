@@ -16,10 +16,14 @@ module.exports = {
   },
   optimization: {
     minimize: false,
-    runtimeChunk: false,
+    runtimeChunk: 'single',
   },
   module: {
     rules: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
       {
         test: /\.m?js/,
         type: 'javascript/auto',
@@ -36,6 +40,17 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              [
+                '@babel/preset-react',
+                {
+                  runtime: 'automatic',
+                },
+              ],
+            ],
+          },
         },
       },
     ],
