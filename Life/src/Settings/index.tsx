@@ -1,4 +1,4 @@
-import { Box, Button, RangeInput } from 'grommet';
+import { Box, Button, Slider, Stack, Typography } from '@mui/material';
 import { useDataContext } from '../DataContext/useDataContext';
 
 export const Settings = () => {
@@ -12,27 +12,35 @@ export const Settings = () => {
   } = useDataContext();
 
   return (
-    <Box direction="column" gap="10px" margin="10px">
+    <Stack direction="column" spacing={2}>
+      <Typography variant="h4">Controls</Typography>
       <Button
-        color="brand"
-        size="large"
+        color="primary"
+        variant="contained"
+        size="medium"
         onClick={gameInProgress ? onStop : onStart}
-        primary
-        label={gameInProgress ? 'Stop' : 'Start'}
-      />
+      >
+        {gameInProgress ? 'Stop' : 'Start'}
+      </Button>
       <Button
-        color="brand"
-        size="large"
+        color="primary"
+        variant="outlined"
+        size="medium"
         onClick={onRandomize}
-        label=" Randomize the board"
-      />
-      <RangeInput
-        value={tickSize}
-        onChange={(event) => setTickSize?.(Number(event.target.value))}
-        min={10}
-        max={1010}
-        step={100}
-      />
-    </Box>
+      >
+        Randomize the board
+      </Button>
+      <div>
+        <Typography variant="h6">Game speed</Typography>
+        <Slider
+          value={tickSize}
+          onChange={(_, value) => setTickSize?.(Number(value))}
+          min={50}
+          max={500}
+          step={50}
+          color="primary"
+        />
+      </div>
+    </Stack>
   );
 };

@@ -1,30 +1,19 @@
+import { Box, Container, Stack } from '@mui/material';
 import { DataProvider } from './DataContext';
 import { GameBoard } from './GameBoard';
-import { Box, Grommet, Header } from 'grommet';
 import { Settings } from './Settings';
 
-const theme = {
-  global: {
-    colors: {
-      brand: '#228BE6',
-    },
-    font: {
-      family: 'Roboto',
-      size: '18px',
-      height: '20px',
-    },
-  },
-};
+import * as SC from './styles';
 
 export default function Life() {
   return (
-    <Grommet full theme={theme}>
-      <DataProvider>
-        <Box direction="row" justify="center" align="center">
+    <DataProvider>
+      <SC.Container>
+        <Stack direction={'row'} spacing={3}>
           <GameBoard />
           <Settings />
-        </Box>
-      </DataProvider>
-    </Grommet>
+        </Stack>
+      </SC.Container>
+    </DataProvider>
   );
 }
