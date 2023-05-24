@@ -2,7 +2,10 @@ import { exec } from 'child_process';
 import { readdirSync } from 'fs';
 
 if (process.argv.length !== 3) {
-  throw new Error('Nope, only single string command, you passed ', process.argv.join(' ,'));
+  throw new Error(
+    'Nope, only single string command, you passed ',
+    process.argv.join(' ,')
+  );
 }
 
 var command = process.argv[2];
@@ -13,7 +16,7 @@ const getDirectories = (source) =>
     .map((dirent) => dirent.name);
 
 const list = getDirectories('./').filter(
-  (dirName) => !['src, .git'].includes(dirName)
+  (dirName) => !['src', '.git', 'node_modules'].includes(dirName)
 );
 
 ['', ...list].forEach((name) => {
